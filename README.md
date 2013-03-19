@@ -1,7 +1,7 @@
 Ticking
 =======
 
-Sometimes you need to call a function X times some other condition has occurred; using a Ticking instance, you can define the callback function to be called, the number of cycles at which the function is called. Then, every time the condition occurs, you just have to call the *tick* method.
+Sometimes you need to call a function every X times some other condition has occurred; using a Ticking instance, you can define the callback function to be called, the number of cycles at which the function is called. Then, every time the condition occurs, you just have to call the *tick* method.
 
 
 Example

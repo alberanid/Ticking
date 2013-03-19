@@ -1,5 +1,5 @@
 /*
- * Ticker library - Arduino library to execute a function every X ticks.
+ * Ticking library - Arduino library to execute a function every X ticks.
  *
  * Copyright (c) 2013 Davide Alberani <da@erlug.linux.it>
  *
@@ -22,15 +22,15 @@
  */
 
 
-#ifndef Ticker_h
-#define Ticker_h
+#ifndef Ticking_h
+#define Ticking_h
 
 #include <Arduino.h>
 
-class Ticker {
+class Ticking {
   public:
-    Ticker(void (*cb)(), unsigned long int runAt_, boolean autoStart=true);
-    //~Ticker();
+    Ticking(void (*cb)(), unsigned long int runAt_, boolean autoStart=true);
+    //~Ticking();
     void start(boolean alsoReset=false);
     void stop();
     void reset();

@@ -1,5 +1,5 @@
 /*
- * Ticker library - Arduino library to execute a function every X ticks.
+ * Ticking library - Arduino library to execute a function every X ticks.
  *
  * Copyright (c) 2013 Davide Alberani <da@erlug.linux.it>
  *
@@ -22,9 +22,9 @@
  */
 
 
-#include "Ticker.h"
+#include "Ticking.h"
 
-Ticker::Ticker(void (*cb)(), unsigned long int runAt_, boolean autoStart) {
+Ticking::Ticking(void (*cb)(), unsigned long int runAt_, boolean autoStart) {
   runAt = runAt_;
   running = false;
   callback = cb;
@@ -34,28 +34,27 @@ Ticker::Ticker(void (*cb)(), unsigned long int runAt_, boolean autoStart) {
   }
 }
 
-void Ticker::reset() {
+void Ticking::reset() {
   ticks = 0;
 }
 
-void Ticker::start(boolean alsoReset) {
+void Ticking::start(boolean alsoReset) {
   if (alsoReset) {
     reset();
   }
   running = true;
 }
 
-void Ticker::stop() {
+void Ticking::stop() {
   running = false;
 }
 
-void Ticker::tick() {
+void Ticking::tick() {
   if (!running) {
     return;
   }
   ticks += 1;
   if (ticks >= runAt) {
-    Serial.println("EEEEEEEEEE: " + ticks);
     ticks = 0;
     if (callback) {
       callback();

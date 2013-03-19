@@ -21,9 +21,13 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #include "Ticking.h"
 
+/**
+ * Initialize a Ticking instance, with a callback and the number of ticks
+ * on which it's called. If autoStart is set to true (default), the object
+ * is active and any call to its 'tick' method will increment the 'ticks' counter.
+ */
 Ticking::Ticking(void (*cb)(), unsigned long int runAt_, boolean autoStart) {
   runAt = runAt_;
   running = false;
@@ -34,10 +38,19 @@ Ticking::Ticking(void (*cb)(), unsigned long int runAt_, boolean autoStart) {
   }
 }
 
+
+/**
+ * Reset the ticks.
+ */
 void Ticking::reset() {
   ticks = 0;
 }
 
+
+/**
+ * From now on, consider any following
+ * call to the 'tick' method.
+ */
 void Ticking::start(boolean alsoReset) {
   if (alsoReset) {
     reset();
@@ -45,10 +58,20 @@ void Ticking::start(boolean alsoReset) {
   running = true;
 }
 
+
+/**
+ * Stop incrementing the 'ticks' counter.
+ */
 void Ticking::stop() {
   running = false;
 }
 
+
+/**
+ * Increment the 'ticks' counter; if the value
+ * specified at initialization is reached, run
+ * the given callback.
+ */
 void Ticking::tick() {
   if (!running) {
     return;
@@ -61,5 +84,4 @@ void Ticking::tick() {
     }
   }
 }
-
 
